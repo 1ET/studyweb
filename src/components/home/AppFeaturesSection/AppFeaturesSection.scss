@@ -1,0 +1,132 @@
+@import '@/styles/breakpoints.scss';
+
+// =============================================================================
+// APP FEATURES SECTION BASE STYLES
+// =============================================================================
+
+.app-features-section {
+  padding: 120px 0;
+  background: #f8fafc;
+
+  @include max-phone {
+    padding: 80px 0;
+  }
+}
+
+// =============================================================================
+// LAYOUT COMPONENTS
+// =============================================================================
+
+.app-features-section-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.features-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+
+  @include max-phone {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+}
+
+.features-text {
+  h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
+    line-height: 1.1;
+
+    @include max-phone {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.feature-item {
+  padding: 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  &.active {
+    background: white;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.feature-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.feature-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.feature-item p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.features-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-mockup {
+  position: relative;
+  width: 300px;
+  height: 600px;
+  background: #1a1a1a;
+  border-radius: 30px;
+  padding: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+  @include max-phone {
+    width: 250px;
+    height: 500px;
+  }
+
+  .feature-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+  }
+} 

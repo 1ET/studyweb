@@ -1,0 +1,83 @@
+// AeonikPro 字体族
+@font-face {
+  font-family: 'AeonikPro';
+  src: url('/assets/fonts/AeonikPro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AeonikPro';
+  src: url('/assets/fonts/AeonikPro-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AeonikPro';
+  src: url('/assets/fonts/AeonikPro-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// AeonikPro Capitalised 变体
+@font-face {
+  font-family: 'AeonikPro-Capitalised';
+  src: url('/assets/fonts/AeonikPro-Black-Capitalised.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Inter 字体族
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// 图标字体
+@font-face {
+  font-family: 'cos-icon';
+  src: url('/assets/fonts/cos-icon_73a4fcf.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('/assets/fonts/iconfont_13bc846.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+} 

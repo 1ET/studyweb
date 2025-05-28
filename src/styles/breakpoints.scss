@@ -1,0 +1,173 @@
+// 响应式断点配置
+$breakpoints: (
+  phone: 768px,   // <= 768px
+  pad: 1024px,    // <= 1024px  
+  pc: 1024px      // > 1024px
+);
+
+// 获取断点值的函数
+@function breakpoint($name) {
+  @return map-get($breakpoints, $name);
+}
+
+// 媒体查询 mixins
+@mixin phone {
+  @media (max-width: #{breakpoint(phone)}) {
+    @content;
+  }
+}
+
+@mixin pad {
+  @media (min-width: #{breakpoint(phone) + 1px}) and (max-width: #{breakpoint(pad)}) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: #{breakpoint(pc) + 1px}) {
+    @content;
+  }
+}
+
+// 小于等于指定断点的 mixins
+@mixin max-phone {
+  @media (max-width: #{breakpoint(phone)}) {
+    @content;
+  }
+}
+
+@mixin max-pad {
+  @media (max-width: #{breakpoint(pad)}) {
+    @content;
+  }
+}
+
+// 大于等于指定断点的 mixins
+@mixin min-pad {
+  @media (min-width: #{breakpoint(phone) + 1px}) {
+    @content;
+  }
+}
+
+@mixin min-pc {
+  @media (min-width: #{breakpoint(pc) + 1px}) {
+    @content;
+  }
+}
+
+// 自定义断点 mixin
+@mixin custom-breakpoint($min: null, $max: null) {
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+}
+
+// 容器最大宽度配置
+$container-max-widths: (
+  phone: 100%,
+  pad: 100%,
+  pc: 1200px
+);
+
+// 容器 mixin
+@mixin container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  
+  @include phone {
+    max-width: map-get($container-max-widths, phone);
+    padding: 0 16px;
+  }
+  
+  @include pad {
+    max-width: map-get($container-max-widths, pad);
+    padding: 0 24px;
+  }
+  
+  @include pc {
+    max-width: map-get($container-max-widths, pc);
+    padding: 0 32px;
+  }
+}
+
+// 网格系统
+@mixin grid($columns: 12, $gap: 16px) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+  
+  @include phone {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  @include pad {
+    gap: 16px;
+  }
+  
+  @include pc {
+    gap: $gap;
+  }
+}
+
+// Flexbox 响应式 mixins
+@mixin flex-responsive($direction: row) {
+  display: flex;
+  
+  @include phone {
+    flex-direction: column;
+  }
+  
+  @include min-pad {
+    flex-direction: $direction;
+  }
+}
+
+// 字体大小响应式
+@mixin font-responsive($phone-size, $pad-size: null, $pc-size: null) {
+  @include phone {
+    font-size: $phone-size;
+  }
+  
+  @if $pad-size {
+    @include pad {
+      font-size: $pad-size;
+    }
+  }
+  
+  @if $pc-size {
+    @include pc {
+      font-size: $pc-size;
+    }
+  }
+}
+
+// 间距响应式
+@mixin spacing-responsive($property, $phone-value, $pad-value: null, $pc-value: null) {
+  @include phone {
+    #{$property}: $phone-value;
+  }
+  
+  @if $pad-value {
+    @include pad {
+      #{$property}: $pad-value;
+    }
+  }
+  
+  @if $pc-value {
+    @include pc {
+      #{$property}: $pc-value;
+    }
+  }
+} 

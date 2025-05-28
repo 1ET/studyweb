@@ -1,0 +1,79 @@
+@import './breakpoints.scss';
+@import './fonts.scss';
+@import './utilities.scss';
+
+:root {
+  // 定义字体变量，方便统一管理
+  --font-primary: 'AeonikPro', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  --font-icon: 'cos-icon';
+  --font-iconfont: 'iconfont';
+
+  --website-navigation-height: 56px;
+}
+
+@include pc {
+  :root {
+    --website-navigation-height: 72px;
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.block-center {
+  margin: 0 auto;
+}

@@ -1,0 +1,144 @@
+@import '@/styles/breakpoints.scss';
+
+.money-transfer-section {
+  padding: 0;
+  background-color: #ffffff;
+
+  @include max-pad {
+    display: flex;
+    flex-direction: column;
+    min-height: 640px;
+  }
+
+  .money-transfer-section-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 48px 0;
+
+    @include max-pad {
+      padding: 0;
+      text-align: center;
+      flex: 1;
+      display: flex;
+    }
+  }
+
+  .money-transfer-content {
+    display: grid;
+    gap: 60px;
+    align-items: center;
+
+    @include pc {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "content media";
+    }
+
+    @include max-pad {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      padding-top: 48px;
+      padding-bottom: 48px;
+      display: grid;
+      grid-template:
+        "content"
+        "media" 1fr / 1fr;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+    }
+  }
+
+  .money-transfer-text {
+    order: 1;
+    @include pc {
+      padding-right: 0;
+    }
+
+    @include max-pad {
+      -webkit-box-align: center;
+      align-items: center;
+      margin: 0 1.25rem;
+    }
+
+    h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      line-height: 1.2;
+      color: #191c20;
+
+      @include max-phone {
+        font-size: 36px;
+      }
+    }
+
+    p {
+      font-size: 18px;
+      color: #4a4a4a;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+  }
+
+  .money-transfer-image {
+    order: 0;
+    justify-content: center;
+    align-items: center;
+
+    @include pc {
+      min-height: 0;
+    }
+
+    @include max-pad {
+      position: relative;
+      min-height: initial;
+      box-sizing: border-box;
+      margin: 0px;
+      padding: 0px;
+      font: inherit;
+      width: 100%;
+      align-self: center;
+      height: 100%;
+      max-height: 446px;
+      grid-area: media;
+    }
+
+    .money-transfer-image-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      @include max-pad {
+        aspect-ratio: 0.75 / 1;
+        inset: 0px;
+        margin: auto;
+        max-height: 100%;
+        position: absolute;
+      }
+
+      .money-transfer-image-wrapper-aspect {
+        width: 100%;
+        max-width: 450px;
+
+        @include max-pad {
+          box-sizing: border-box;
+          margin: 0px;
+          padding: 0px;
+          font: inherit;
+          width: 100%;
+          height: 100%;
+          aspect-ratio: 0.75 / 1;
+          position: relative;
+        }
+
+        .money-transfer-video {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}

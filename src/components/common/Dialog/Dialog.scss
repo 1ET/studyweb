@@ -1,0 +1,378 @@
+@import '@/styles/breakpoints.scss';
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: dialogOverlayFadeIn 0.2s ease-out;
+
+  @include phone {
+    padding: 0.5rem;
+  }
+}
+
+.dialog {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: dialogSlideIn 0.3s ease-out;
+  position: relative;
+
+  // 不同尺寸
+  &.dialog-small {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &.dialog-medium {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  &.dialog-large {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  &.dialog-fullscreen {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+
+    @include min-pad {
+      width: 95vw;
+      height: 95vh;
+      border-radius: 12px;
+    }
+  }
+
+  @include phone {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    border-radius: 12px 12px 0 0;
+    max-height: 85vh;
+  }
+}
+
+// 屏幕右上角关闭按钮
+.dialog-close-screen {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  background: transparent;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @include phone {
+    top: 15px;
+    right: 15px;
+    width: 36px;
+    height: 36px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  @include custom-breakpoint($max: 480px) {
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+// 外部关闭按钮容器（保留原有的，以防需要）
+.dialog-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+// 外部关闭按钮（对话框右上角）
+.dialog-close-external {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+    transform: scale(1.05);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #3b82f6, 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  @include phone {
+    top: -8px;
+    right: -8px;
+    width: 28px;
+    height: 28px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 1rem;
+  margin-bottom: 0;
+
+  // 隐藏头部时的样式
+  &.hidden {
+    display: none;
+  }
+
+  @include phone {
+    padding: 1rem 1rem 0 1rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
+.dialog-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #191c20;
+  line-height: 1.4;
+
+  @include phone {
+    font-size: 1.125rem;
+  }
+}
+
+.dialog-close {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #3b82f6;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.dialog-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+
+  // 当没有头部时，调整顶部内边距
+  &.no-header {
+    padding-top: 2rem;
+  }
+
+  // 当没有底部时，调整底部内边距
+  &.no-footer {
+    padding-bottom: 2rem;
+  }
+
+  @include phone {
+    padding: 1rem;
+
+    &.no-header {
+      padding-top: 1.5rem;
+    }
+
+    &.no-footer {
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  // 自定义滚动条
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+
+    &:hover {
+      background: #a8a8a8;
+    }
+  }
+}
+
+.dialog-footer {
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  flex-shrink: 0;
+
+  // 隐藏底部时的样式
+  &.hidden {
+    display: none;
+  }
+
+  @include phone {
+    padding: 0.75rem 1rem 1rem 1rem;
+    flex-direction: column-reverse;
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+// 动画
+@keyframes dialogOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialogSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// 全局样式：防止背景滚动
+body.dialog-open {
+  overflow: hidden;
+  padding-right: 0; // 防止滚动条消失导致的布局跳动
+}
+
+// 响应式调整
+@include custom-breakpoint($max: 640px) {
+  .dialog-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .dialog {
+    border-radius: 16px 16px 0 0;
+    max-height: 90vh;
+    width: 100%;
+  }
+}
+
+// 深色模式支持
+@media (prefers-color-scheme: dark) {
+  .dialog {
+    background: #1f2937;
+    color: #f9fafb;
+  }
+
+  .dialog-header {
+    border-bottom-color: #374151;
+  }
+
+  .dialog-footer {
+    border-top-color: #374151;
+  }
+
+  .dialog-title {
+    color: #f9fafb;
+  }
+
+  .dialog-close,
+  .dialog-close-external,
+  .dialog-close-screen {
+    color: #000;
+    background: transparent;
+  }
+} 

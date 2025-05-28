@@ -1,0 +1,367 @@
+@import '@/styles/breakpoints.scss';
+
+.use-case-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: white;
+
+  @include max-pad {
+    min-height: initial;
+    max-height: 640px;
+  }
+
+  // 背景图片的共同样式
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: 0;
+
+    &.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // 设置图片默认透明度为0
+  .send-image,
+  .split-image,
+  .gift-image {
+    opacity: 0;
+  }
+
+  // 内容区域样式
+  .use-case-content {
+    max-width: 1000px;
+    width: 100%;
+    z-index: 10;
+    margin: 0 auto;
+    height: 100%;
+    min-height: max(640px, 100vh);
+    padding-top: 64px;
+    padding-bottom: 64px;
+    position: relative;
+    align-content: initial;
+    display: grid;
+    grid-template-areas:
+      "content"
+      "media"
+      "tabs";
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    text-align: center;
+
+    @include max-pad {
+      position: relative;
+      align-content: initial;
+      grid-template-areas:
+        "content"
+        "media"
+        "tabs";
+      grid-template-rows: auto 1fr auto;
+      height: 100%;
+      min-height: 640px;
+    }
+
+    .use-case-text {
+      display: grid;
+      grid-template: "text";
+      box-sizing: border-box;
+      margin: 0px;
+      padding: 0px;
+      font: inherit;
+      grid-area: content;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+
+      .use-case-text-wrap {
+        position: relative;
+        gap: 1.5rem;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        font: inherit;
+        color: var(--rui-color-foreground);
+        min-height: 0px;
+        display: grid;
+        grid-template-rows: repeat(auto-fill, auto);
+        grid-area: text;
+        padding-left: 0px;
+        padding-right: 0px;
+        -webkit-box-align: center;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+    }
+
+    @include max-phone {
+      margin-left: 5%;
+    }
+
+    @include max-phone {
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+
+  h2 {
+    font-size: 56px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+    @include max-phone {
+      font-size: 36px;
+    }
+
+    @include max-pad {
+      font-size: 42px;
+    }
+  }
+
+  p {
+    font-size: 20px;
+    margin-bottom: 30px;
+
+    @include max-phone {
+      font-size: 18px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .btn-light {
+    background-color: white;
+    color: #000;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 40px;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(0);
+    }
+  }
+
+  .use-case-notification {
+    position: relative;
+    max-height: 500px;
+    min-height: initial;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font: inherit;
+    width: 100%;
+    align-self: center;
+    height: 100%;
+    grid-area: media;
+    color: #f4f4f4;
+
+    .use-case-notification-warp {
+      aspect-ratio: 2 / 1;
+      inset: 0px;
+      transition: opacity 600ms ease-in-out;
+      position: absolute;
+      box-sizing: border-box;
+      padding: 0px;
+      font: inherit;
+      margin: auto;
+      height: 100%;
+
+      .use-case-notification-contain {
+        opacity: 0;
+
+        &.active {
+          opacity: 1;
+          z-index: 1;
+        }
+      }
+
+
+      img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        inset: 0px;
+        object-position: center center;
+        color: transparent;
+        object-fit: contain;
+      }
+    }
+
+    @include max-phone {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .notification-header {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+
+      .emoji {
+        margin-right: 6px;
+        font-size: 16px;
+      }
+    }
+
+    .notification-amount {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .notification-description {
+      font-size: 14px;
+      color: #666;
+
+      .emoji {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .action-buttons {
+    box-sizing: border-box;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    width: fit-content;
+    overflow: hidden;
+    align-self: flex-start;
+    max-width: 100%;
+    grid-area: tabs;
+
+    .action-buttons-wrap {
+      gap: 0.75rem;
+      max-width: 100vw;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      margin-left: calc(-1 * 1.25rem);
+      margin-right: calc(-1 * 1.25rem);
+      overflow-x: scroll;
+      scrollbar-width: none;
+      flex-direction: row;
+      box-sizing: border-box;
+      margin: 0px;
+      padding: 0px;
+      font: inherit;
+      min-width: 0px;
+      display: flex;
+    }
+
+    @include max-phone {
+      justify-content: center;
+    }
+
+    .action-btn {
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+      border: 2px solid #fff;
+      box-sizing: border-box;
+      border-radius: 30px;
+      color: #fff;
+      padding-left: 24px;
+      padding-right: 24px;
+      min-width: min-content;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      height: 42px;
+
+      &:hover {
+        background-color: hsla(0, 0%, 100%, .2);
+        opacity: 0.85;
+      }
+
+      &.active {
+        background-color: white;
+        color: #000;
+        // 保持padding不变避免宽度变化触发重排
+        padding-left: 24px;
+        padding-right: 24px;
+        border: 2px solid transparent; // 用透明边框替代border: none避免布局变化        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); // 添加阴影增强视觉反馈
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to right, rgba(6, 102, 235, 0.2), rgba(6, 102, 235, 0.1));
+          // transform: scaleX(0); // 初始缩放为0
+          transform-origin: left;
+          animation: fillProgress 10s linear forwards;
+          z-index: -1;
+        }
+      }
+    }
+
+    .action-btn::before {
+      position: absolute;
+      content: "";
+      inset: 0px;
+      border-radius: 9999px;
+      opacity: 1;
+      transition: none;
+      background-size: 0px 100%;
+      background-image: linear-gradient(#dfe3e7, #dfe3e7);
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+  }
+
+  .use-case-text-item {
+    transition: opacity 0.6s ease;
+    width: 100%;
+    grid-column: 1;
+    grid-row: 1;
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+}
+
+@keyframes fillProgress {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}

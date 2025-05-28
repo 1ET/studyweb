@@ -1,0 +1,22 @@
+.country-icon-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  .country-flag {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 50%;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .country-name {
+    color: inherit;
+    font-size: inherit;
+  }
+}

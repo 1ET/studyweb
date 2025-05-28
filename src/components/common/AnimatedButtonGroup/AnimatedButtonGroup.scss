@@ -1,0 +1,214 @@
+@import '@/styles/breakpoints.scss';
+
+.animated-button-group {
+  box-sizing: border-box;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  width: fit-content;
+  overflow: hidden;
+  align-self: flex-start;
+  max-width: 100%;
+
+  .button-group-wrap {
+    gap: 0.75rem;
+    max-width: 100vw;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin-left: calc(-1 * 1.25rem);
+    margin-right: calc(-1 * 1.25rem);
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-direction: row;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font: inherit;
+    min-width: 0px;
+    display: flex;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @include custom-breakpoint($max: 480px) {
+    justify-content: center;
+    
+    .button-group-wrap {
+      justify-content: center;
+    }
+  }
+
+  // 基础按钮样式
+  .animated-btn {
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 30px;
+    padding-left: 24px;
+    padding-right: 24px;
+    min-width: min-content;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+
+    .btn-icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .btn-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    // 进度条动画背景
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: scaleX(0);
+      transform-origin: left;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &.active::before {
+      opacity: 1;
+      animation: fillProgress var(--animation-duration, 10s) linear forwards;
+    }
+
+    // 重置动画
+    &.reset-animation::before {
+      animation: none;
+    }
+
+    &.reset-animation.active::before {
+      animation: fillProgress var(--animation-duration, 10s) linear forwards;
+    }
+  }
+
+  // Light 变体（深色背景上的按钮）
+  &.light {
+    .animated-btn {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+      border: 2px solid #fff;
+      color: #fff;
+
+      &:hover:not(.active) {
+        background-color: rgba(255, 255, 255, 0.2);
+        opacity: 0.85;
+      }
+
+      &.active {
+        background-color: white;
+        color: #000;
+        border: 2px solid transparent;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        &::before {
+          background: linear-gradient(
+            to right, 
+            rgba(6, 102, 235, 0.2), 
+            rgba(6, 102, 235, 0.1)
+          );
+        }
+      }
+    }
+  }
+
+  // Dark 变体（浅色背景上的按钮）
+  &.dark {
+    .animated-btn {
+      background-color: #ffffff;
+      color: #333;
+      border: 1px solid #e0e0e0;
+
+      &:hover:not(.active) {
+        border-color: #191c20;
+        background-color: #f8f8f8;
+      }
+
+      &.active {
+        background-color: #191c20;
+        color: #ffffff;
+        border-color: #191c20;
+
+        &::before {
+          background: linear-gradient(
+            to right, 
+            rgba(255, 255, 255, 0.2), 
+            rgba(255, 255, 255, 0.1)
+          );
+        }
+      }
+    }
+  }
+}
+
+// 进度条填充动画
+@keyframes fillProgress {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+// 响应式调整
+@include phone {
+  .animated-button-group {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    .button-group-wrap {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-left: -1rem;
+      margin-right: -1rem;
+    }
+
+    .animated-btn {
+      padding-left: 20px;
+      padding-right: 20px;
+      font-size: 15px;
+      height: 40px;
+    }
+  }
+}
+
+@include custom-breakpoint($max: 480px) {
+  .animated-button-group {
+    .button-group-wrap {
+      gap: 0.5rem;
+    }
+
+    .animated-btn {
+      padding-left: 16px;
+      padding-right: 16px;
+      font-size: 14px;
+      height: 38px;
+      min-width: 80px;
+    }
+  }
+} 

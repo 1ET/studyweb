@@ -1,0 +1,12 @@
+# 忽略除 src 目录外的所有文件
+/*
+!/src
+
+# 但仍然忽略这些目录
+node_modules/
+.next/
+out/
+public/
+*.config.js
+*.config.mjs
+*.config.ts 

@@ -1,0 +1,188 @@
+@import '@/styles/breakpoints.scss';
+@import '@/styles/global.scss';
+footer {
+  background-color: #191c20;
+}
+.navulli-section {
+  background-color: #191c20;
+  color: #8d969e;
+  padding: 40px 0 1.25rem;
+
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.01125rem;
+
+  .navulli-section-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    @include max-pad {
+      padding: 0 20px;
+    }
+  }
+
+  // 顶部区域
+  .navulli-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+
+    @include max-pad {
+      margin-bottom: 20px;
+    }
+
+    .logo-container {
+      height: 100%;
+      width: 10rem;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        transition: opacity 0.2s ease;
+
+        &>span {
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-color: currentColor;
+          color: rgb(141, 150, 158);
+          background-color: rgb(141, 150, 158);
+          mask-repeat: no-repeat;
+          mask-size: 100% 100%;
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+        }
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  // 国家选择和法律链接
+  .navulli-legal-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+
+    @include max-pad {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .country-selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+
+      .country-flag {
+        font-size: 18px;
+      }
+
+      .country-name {
+        color: #a0a0a0;
+      }
+    }
+
+    .legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      .legal-link {
+        color: #a0a0a0;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  // 公司信息
+  .navulli-company-info {
+    margin-bottom: 20px;
+
+    .copyright {
+      color: #a0a0a0;
+      margin-bottom: 10px;
+    }
+
+    .legal-disclosure {
+      p {
+        margin-bottom: 16px;
+        line-height: 1.5;
+      }
+
+      .inline-link {
+        color: #a0a0a0;
+        text-decoration: underline;
+
+        &:hover {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  // 联系方式
+  .navulli-contact {
+    margin-bottom: 30px;
+
+    p {
+      line-height: 1.5;
+    }
+  }
+
+  // 国际汇款
+  .navulli-transfers {
+    padding-top: 20px;
+
+    .transfer-title {
+      color: #a0a0a0;
+    }
+
+    .transfer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+
+      .transfer-link {
+        color: #a0a0a0;
+        text-decoration: underline;
+
+        &:hover {
+          color: #ffffff;
+          text-decoration: underline;
+        }
+      }
+
+      .separator {
+        color: #505050;
+      }
+    }
+  }
+}

@@ -1,0 +1,170 @@
+@import '@/styles/breakpoints.scss';
+
+// =============================================================================
+// CARD SELECTION SECTION BASE STYLES
+// =============================================================================
+
+.card-selection-section {
+  background-color: #000000;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: max(640px, 100vh);
+  width: 100%;
+  @include max-pad {
+    min-height: 640px;
+  }
+}
+
+// =============================================================================
+// LAYOUT COMPONENTS
+// =============================================================================
+
+.card-selection-section-container {
+  transition: opacity 300ms ease-in-out;
+  opacity: 1;
+  padding: 64px 0;
+  display: grid;
+  grid-template:
+    "content"
+    "media" 1fr / auto;
+  align-content: center;
+  width: 100%;
+  max-width: 1000px;
+  @include max-pad {
+    padding: 48px 0;
+  }
+}
+
+.card-selection-content {
+  gap: 1.5rem;
+  padding: 0;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-direction: column;
+  align-self: center;
+  min-height: 0;
+  display: flex;
+  grid-area: content;
+
+  @include max-pad {
+    margin-bottom: 1.25rem;
+  }
+}
+
+// =============================================================================
+// CONTENT ELEMENTS
+// =============================================================================
+
+.card-selection-content h2 {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  line-height: 1.1;
+
+  @include max-phone {
+    font-size: 32px;
+  }
+
+  @include max-pad {
+    font-size: 42px;
+    margin-bottom: 1rem;
+  }
+}
+
+.card-selection-content p {
+  font-size: 20px;
+  color: #e0e0e0;
+  margin-bottom: 40px;
+  line-height: 1.5;
+
+  @include max-pad {
+    margin-bottom: 1.25rem;
+  }
+
+  @include max-phone {
+    font-size: 18px;
+  }
+}
+
+// =============================================================================
+// BUTTON STYLES
+// =============================================================================
+
+.btn-light {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  font-weight: 500;
+  padding: 14px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+// =============================================================================
+// VIDEO COMPONENTS
+// =============================================================================
+
+.card-selection-video-container {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  width: 100%;
+  height: 100%;
+  grid-area: media;
+
+  @include max-phone {
+    max-width: 90%;
+  }
+}
+
+.card-selection-video-wrapper {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 0;
+  font: inherit;
+  inset: 0;
+  margin: auto;
+  max-height: 100%;
+  left: 0;
+  right: 0;
+  @include max-pad {
+    // position: relative;
+  }
+}
+
+.card-selection-video-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  aspect-ratio: 1.6667 / 1;
+}
+
+.card-selection-video-aspect {
+  width: 100%;
+  height: 100%;
+}
+
+.cards-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  backface-visibility: hidden;
+
+  @include max-phone {
+    min-height: 250px;
+  }
+}

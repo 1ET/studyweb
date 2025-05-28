@@ -1,0 +1,167 @@
+@import '@/styles/breakpoints.scss';
+@import '@/styles/global.scss';
+
+.plans-section {
+    padding: 20px;
+    background-color: #191c20;
+    color: #ffffff;
+
+    .plans-section-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+}
+
+.section-title {
+    font-size: 42px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #ffffff;
+
+    @include max-pad {
+        margin: 2.5rem 0;
+        color: #ffffff;
+        text-align: left;
+        font-family: "Aeonik Pro", sans-serif;
+        font-weight: 500;
+        font-size: 1.75rem;
+        line-height: 2rem;
+        letter-spacing: -0.0175rem;
+    }
+}
+
+.plans-container {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 100px;
+    flex-direction: row;
+}
+
+.plan-card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 30px;
+    color: #333333;
+    flex: 1;
+    position: relative;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    @include max-pad {
+        padding: 24px;
+        min-height: 220px;
+    }
+
+    .arrow-icon {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        border-radius: 9999px;
+
+        &::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background-color: currentColor;
+            mask-image: url('/assets/images/icons/svg/ui/arrow-thin-right.svg');
+            -webkit-mask-image: url('/assets/images/icons/svg/ui/arrow-thin-right.svg');
+            mask-size: contain;
+            -webkit-mask-size: contain;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            transition: transform 0.2s ease;
+        }
+    }
+
+    &:hover .arrow-icon {
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        background-color: #191c20;
+
+        &::after {
+            transform: translateX(4px);
+        }
+    }
+}
+
+.plan-name {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.plan-price {
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 16px;
+}
+
+.plan-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #505a63;
+    margin-bottom: 40px;
+
+    @include max-pad {
+        font-family: Inter, sans-serif;
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        letter-spacing: -0.00438rem;
+        white-space: pre-line;
+    }
+}
+
+.footer-cta {
+    text-align: left;
+    margin-bottom: 60px;
+
+    .cta-subheading {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        color: #a0a0a0;
+    }
+
+    .cta-heading {
+        font-size: 42px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #ffffff;
+
+        @include max-pad {
+            text-align: left;
+            text-transform: none;
+            font-family: "Aeonik Pro", sans-serif;
+            font-weight: 500;
+            font-size: 1.75rem;
+            line-height: 2rem;
+            letter-spacing: -0.0175rem;
+        }
+    }
+
+    .learn-more-btn {
+        background-color: #ffffff;
+        color: #191c20;
+        border-radius: 30px;
+        padding: 14px 28px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+    }
+}
+
+.footer-bottom {
+    padding: 30px 0;
+
+    .copyright {
+        font-size: 14px;
+        color: #a0a0a0;
+    }
+}

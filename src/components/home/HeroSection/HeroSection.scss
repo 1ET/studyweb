@@ -1,0 +1,521 @@
+@import '@/styles/breakpoints.scss';
+@import '@/styles/global.scss';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.hero-section {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out;
+
+  &.scrolled {
+    opacity: 0;
+  }
+}
+
+// 第一个容器（默认显示）
+.hero-section-container-first {
+  // max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  transition: opacity 0.6s ease-in-out;
+
+  @include max-pad {
+    padding: 0 1.25rem;
+  }
+
+  &.fade-in {
+    opacity: 1;
+    z-index: 3;
+  }
+
+  &.fade-out {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+// 第二个容器（滚动后显示）
+.hero-section-container-second {
+  position: absolute;
+  top: var(--website-navigation-height);
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+  transition: opacity 0.6s ease-in-out;
+  background: #fff;
+
+  @include max-pad {
+    padding: 0 1.25rem;
+  }
+
+  &.fade-in {
+    opacity: 1;
+  }
+
+  &.fade-out {
+    opacity: 0;
+  }
+
+  @include max-pad {
+    position: relative;
+    height: 100%;
+  }
+
+  .hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0 3rem 0;
+
+    @include max-pad {
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: #000;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #333;
+    }
+  }
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    color: transparent;
+    transition-timing-function: cubic-bezier(0.35, 0, 0, 1);
+    transition-property: transform;
+    transform: translate(-50%, 0px) scale(1.75);
+    transition-duration: 0ms;
+    transition-delay: 100ms;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 100%;
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  .hero-human {
+    width: calc(126vh);
+    height: calc(70vh);
+  }
+}
+
+.hero-content {
+  max-width: 1000px;
+  margin: calc(var(--website-navigation-height) + 1.5rem) auto 0;
+  padding: 3rem 0 1.5rem 0;
+  color: white;
+
+  @include max-pad {
+    padding-top: 1rem;
+    padding-bottom: 0rem;
+  }
+
+  h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .hero-title-line {
+    display: block;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    max-width: 450px;
+
+    @include max-pad {
+      max-width: 100%;
+    }
+  }
+}
+
+@include phone {
+  .hero-section .hero-content h1,
+  .second-hero .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-section .hero-content p,
+  .second-hero .hero-content p {
+    font-size: 1rem;
+  }
+
+  // 第二个容器的响应式样式
+  .hero-section-container-second {
+    .hero-content {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 0.875rem;
+        padding: 0 20px;
+      }
+    }
+
+    .spending-cards-swiper {
+      margin-top: 2rem;
+    }
+
+    .spending-swiper {
+      padding-top: 30px;
+      padding-bottom: 70px;
+    }
+  }
+}
+
+// 平板设备适配
+@include pad {
+  .hero-section-container-second {
+    .spending-swiper {
+      .swiper-slide {
+        height: 350px;
+      }
+    }
+  }
+}
+
+.hero-image {
+  flex: 1;
+
+  img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+}
+
+// Swiper 轮播图容器
+.spending-cards-swiper {
+  z-index: 10;
+  width: 100%;
+  max-width: calc(0.8 * 100vh);
+  margin: 0 auto;
+  padding: 0;
+
+  // 分页器样式
+  .swiper-pagination {
+    position: relative;
+    bottom: -20px;
+    margin-top: 20px;
+
+    .swiper-pagination-bullet {
+      background: #8d969e;
+      opacity: 0.7;
+      width: 0.5rem;
+      height: 0.5rem;
+      min-width: 10px;
+      min-height: 10px;
+      margin: 0 4px;
+
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.spending-swiper {
+  width: calc(90vh);
+  padding-top: 50px;
+  padding-bottom: 20px;
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    height: calc(40vh);
+    transition: none;
+    opacity: 1;
+    transform: none;
+
+    &.swiper-slide-active,
+    &.swiper-slide-next,
+    &.swiper-slide-prev {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+// 轮播卡片样式
+.spending-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 单张卡片样式
+.spending-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+  scale: 0.9;
+}
+
+.active-card {
+  scale: 1;
+}
+
+// 卡片背景图片
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  // 覆盖层（可选方案）
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none; // 让点击事件穿透到父元素
+  }
+}
+
+// App 下载对话框样式
+.app-download-dialog {
+  .dialog {
+    max-width: 480px;
+
+    @include phone {
+      max-width: 90vw;
+    }
+  }
+}
+
+.app-download-content {
+  text-align: center;
+
+  @include phone {
+    padding: 1.5rem;
+  }
+}
+
+.app-download-header {
+  margin-bottom: 2rem;
+
+  .app-download-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #000;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    word-wrap: break-word;
+
+    @include phone {
+      font-size: 1.5rem;
+    }
+  }
+
+  .app-download-subtitle {
+    color: #191c1f;
+    margin-bottom: 1rem;
+    font-family: "Aeonik Pro", sans-serif;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: normal;
+    text-align: center;
+
+  }
+}
+
+.qr-code-section {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+
+  .qr-code-container {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include phone {
+      width: 160px;
+      height: 160px;
+    }
+
+    .qr-code-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.divider-section {
+  margin: 1.5rem 0 0 0;
+
+  text-align: center;
+
+  .divider-text {
+    font-family: "Aeonik Pro", sans-serif;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: normal;
+    color: #191c1f;
+    white-space: nowrap;
+  }
+}
+
+.phone-input-section {
+  margin-top: 1.5rem;
+
+  .phone-input-container {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+    border: 1px solid #e9ecef;
+    transition: all 0.2s ease;
+
+    &:focus-within {
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+
+    .country-code-selector {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 8px;
+      padding: 0.75rem;
+      gap: 0.5rem;
+      min-width: 80px;
+
+      .flag-icon {
+        font-size: 1.2rem;
+      }
+
+      .country-code-select {
+        border: none;
+        background: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #333;
+        cursor: pointer;
+        outline: none;
+        appearance: none;
+        padding-right: 1rem;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.25rem center;
+        background-repeat: no-repeat;
+        background-size: 1rem;
+      }
+    }
+
+    .phone-number-input {
+      flex: 1;
+      border: none;
+      background: white;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      outline: none;
+      color: #333;
+
+      &::placeholder {
+        color: #999;
+      }
+    }
+
+    .send-sms-button {
+      background: #666;
+      border: none;
+      border-radius: 8px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background: #333;
+      }
+
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}

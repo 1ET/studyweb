@@ -1,0 +1,29 @@
+{
+  "name": "studyweb",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build",
+    "deploy": "npm run export && touch out/.nojekyll",
+    "lint": "next lint src",
+    "lint:watch": "next lint --watch",
+    "lint:fix": "next lint src --fix"
+  },
+  "dependencies": {
+    "next": "15.3.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sass": "^1.89.0",
+    "styled-components": "^6.1.18",
+    "swiper": "^11.2.7"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
+    "glob": "^10.4.5"
+  }
+}
