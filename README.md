@@ -20,3 +20,6 @@ $breakpoints: (
 - **应用功能介绍**：交互式功能切换和动画效果
 - **响应式导航**：适配不同设备的导航系统
 - **数据管理**：模块化的数据抽离和管理系统
+
+## 🌐 演示地址
+**Live Demo**: [https://studyweb.memedog.club/](https://studyweb.memedog.club/)
